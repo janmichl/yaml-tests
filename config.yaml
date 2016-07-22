@@ -1,0 +1,5 @@
+
+helloworld:
+  integer-property: 1
+  boolean-property: false
+  string-property: 'this is string'
