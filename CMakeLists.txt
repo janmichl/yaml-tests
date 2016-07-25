@@ -62,7 +62,7 @@ set(CMAKE_CXX_FLAGS_DEBUG ${YAML-CPP_CXX_FLAGS_DEBUG})
 ########
 
 set(TGT_NAME main)
-add_executable(${TGT_NAME} main.cpp)
+add_executable(${TGT_NAME} ${CMAKE_SOURCE_DIR}/src/main.cpp)
 set_property(TARGET ${TGT_NAME} APPEND PROPERTY COMPILE_FLAGS "-std=c++11")
 
 target_link_libraries(${TGT_NAME} yaml-cpp)
@@ -72,4 +72,3 @@ add_dependencies(${TGT_NAME} TGT_yaml-cpp_build_libraries)
 
 set(REF_FILENAME "config.yaml") 
 file(COPY ${REF_FILENAME} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-

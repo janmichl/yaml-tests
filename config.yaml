@@ -1,10 +1,11 @@
-
-hello:
+---
+walkoptions:
   integer-property: 1
   boolean-property: false
   string-property: 'this is the first string'
 
-world:
+solveroptions:
   integer-property: 2
   boolean-property: true
   string-property: 'this is the second string'	
+...  
