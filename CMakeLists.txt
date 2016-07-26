@@ -23,6 +23,14 @@ if(COLLECT_FILES)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
 endif(COLLECT_FILES)
 
+##
+## Mandatory dependencies
+##
+
+# Search for Eigen
+find_package(Eigen3 REQUIRED)
+include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
+
 #####################################
 ## Dependencies
 #####################################

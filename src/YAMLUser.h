@@ -2,28 +2,27 @@
 #define YAMLUSER_H
 
 #include <string>
-#include <utility>
-#include <vector>
 #include "yaml-cpp/yaml.h"
 
 class YAMLUser
 {
     public:
+        static YAMLUser& getInstance(std::string filename)
+        {
+            static YAMLUser instance(filename);
+            return instance;
+        }
+
+        YAML::Node config_file_;
+
+    private:
+        YAMLUser() {};
+        YAMLUser(const YAMLUser&);
+        void operator=(const YAMLUser&);
         YAMLUser(std::string filename)
         {
             config_file_ = YAML::LoadFile(filename);
         }
-
-        virtual void readParameters(std::string nodename)
-        {
-        }
-
-        virtual void writeParameters(std::string filename)
-        {
-        }
-
-    protected:
-        YAML::Node config_file_;
 };
 
 #endif //YAMLUSER_H
