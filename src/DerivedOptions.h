@@ -21,11 +21,13 @@ class DerivedOptions : public BaseOptions
             std::cout << string1 << std::endl;
             string2 = node["string2"].as<std::string>();
             std::cout << string2 << std::endl;
-            vector1[0] = node["vector1"].as<std::vector<double>>().at(0);
-            vector1[1] = node["vector1"].as<std::vector<double>>().at(1);
+            //vector1[0] = node["vector1"].as<std::vector<double>>().at(0);
+            //vector1[1] = node["vector1"].as<std::vector<double>>().at(1);
+            vector1 = Eigen::Vector2d(node["vector1"].as<std::vector<double>>().data());
             std::cout << vector1 << std::endl;
-            vector2[0] = node["vector2"].as<std::vector<double>>().at(0);
-            vector2[1] = node["vector2"].as<std::vector<double>>().at(1);
+            //vector2[0] = node["vector2"].as<std::vector<double>>().at(0);
+            //vector2[1] = node["vector2"].as<std::vector<double>>().at(1);
+            vector2 = Eigen::Vector2d(node["vector2"].as<std::vector<double>>().data());
             std::cout << vector2 << std::endl;
         }
 
