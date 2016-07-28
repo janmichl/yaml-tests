@@ -6,13 +6,11 @@
 class BaseOptions
 {
     public:
-        BaseOptions(const YAMLUser& yaml_user)
+        BaseOptions()
         {
-            readParameters("baseoptions", yaml_user);
         }
   
-    private:
-        void readParameters(std::string nodename, const YAMLUser& yaml_user)
+        void readParameters(const YAMLUser& yaml_user, std::string nodename = "baseoptions")
         {       
             const YAML::Node& node = yaml_user.config_file_[nodename]; 
             uint1 = node["uint1"].as<unsigned int>(); 
@@ -33,6 +31,7 @@ class BaseOptions
             std::cout << uint8 << std::endl;
         }
 
+    private:
         unsigned int uint1;
         unsigned int uint2;
         unsigned int uint3;

@@ -3,8 +3,8 @@
 
 int main()
 {
-    YAMLUser& yaml_user = YAMLUser::getInstance("config.yaml");
-    DerivedOptions derived_options = DerivedOptions(yaml_user); 
+    DerivedOptions derived_options = DerivedOptions(); 
+    derived_options.readParameters(YAMLUser::getInstance("config.yaml"));    
 
     return 0;	
 }

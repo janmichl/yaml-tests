@@ -12,4 +12,6 @@ baseoptions:
 derivedoptions:
   string1: 'this is the first string'
   string2: 'this is the second string'	
+  vector1: [1.0, 2.0]
+  vector2: [3.0, 4.0]
 ...  
