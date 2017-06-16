@@ -1,7 +1,9 @@
-# yaml-tests
+yaml-tests
+==========
 
-mkdir build
+Tests for reading parameters specified in a yaml-file.
 
-cd build
+how to use
+==========
 
-cmake ..
+Type '`make all`'.
