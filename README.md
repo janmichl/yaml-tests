@@ -10,7 +10,7 @@ how to use
 Type '`make update`'.
 Type '`make all`'.
 
-requirements
+dependencies
 ============
 
 Eigen library install onto system.
