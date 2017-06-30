@@ -2,6 +2,7 @@
 cmake_minimum_required(VERSION 2.6.3)
 project(yaml-tests CXX)
 
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/")
 option(COLLECT_FILES "Copy libraries to <build>/lib, binaries to <build>/bin, headers to <build>/include." ON)
 
 #####################################
