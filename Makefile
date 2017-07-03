@@ -1,6 +1,6 @@
 MAKE_FLAGS=-j5
 
-all: clean
+all: update clean
 	mkdir -p build
 	cd build; cmake ..
 	cd build; ${MAKE} ${MAKE_FLAGS}
