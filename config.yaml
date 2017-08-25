@@ -1,15 +1,11 @@
 ---
-baseoptions:
+ConfigurableClassBase:
   uint1: 1
   uint2: 2
   uint3: 3
   uint4: 4
-  uint5: 5
-  uint6: 6
-  uint7: 7
-  uint8: 8
-
-derivedoptions:
+  str: 'blabla'
+ConfigurableClassDerived:
   string1: 'this is the first string'
   string2: 'this is the second string'	
   vector1: [1.0, 2.0]
