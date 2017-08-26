@@ -1,3 +1,10 @@
+/**
+    @file
+    @author Jan Michalczyk
+
+    @brief
+*/
+
 #pragma once
 
 #include <string>
@@ -11,12 +18,12 @@ namespace yaml_config
         public:
             ConfigReader(const std::string& filename)
             {
-                YAML::Node root_node_ = YAML::LoadFile(filename);
+                root_node_ = YAML::LoadFile(filename);
             }
 
 
             template<typename t>
-                void readVector(const std::string& node_name, t& value_to_read)
+                void readVectorDouble(const std::string& node_name, t& value_to_read)
             {
                     YAML::Node node = current_node_[node_name];
                     if(!node.IsSequence())
@@ -36,15 +43,13 @@ namespace yaml_config
             template<typename t>
                 void readScalar(const std::string& node_name, t& value_to_read)
             {
-                YAML::Node node = current_node_[node_name];
-                value_to_read = node[node_name].as<t>(); 
+                value_to_read = current_node_[node_name].as<t>(); 
             }
 
-            
-            virtual void readParameters(const std::string& node_name)
+
+            void findNode(const std::string& node_name)
             {
                 goDown(node_name);
-                goUp();
             }
 
 
@@ -52,12 +57,6 @@ namespace yaml_config
             void goDown(const std::string& node_name)
             {
                 current_node_ = root_node_[node_name];
-            }
-
-
-            void goUp()
-            {
-                current_node_ = root_node_;
             }
 
 

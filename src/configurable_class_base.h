@@ -1,13 +1,20 @@
+/**
+    @file
+    @author Jan Michalczyk
+
+    @brief
+*/
+
 #pragma once
 
 #include "config_reader.h"
 
 namespace yaml_config
 {
-    class ConfigurableClassBase : public virtual ConfigReader
+    class ConfigurableClassBase
     {
         public:
-            ConfigurableClassBase(const char* config_file) : ConfigReader(config_file)
+            ConfigurableClassBase(const char* config_file) : config_reader(config_file)
             {
                 readParameters("ConfigurableClassBase");
             }
@@ -16,18 +23,21 @@ namespace yaml_config
         private:
             void readParameters(const std::string& node_name)
             {       
-                readScalar("uint1", uint1);
+                config_reader.findNode(node_name);
+                config_reader.readScalar("uint1", uint1);
                 std::cout << uint1 << std::endl;
-                readScalar("uint2", uint2);
+                config_reader.readScalar("uint2", uint2);
                 std::cout << uint2 << std::endl;
-                readScalar("uint3", uint3);
+                config_reader.readScalar("uint3", uint3);
                 std::cout << uint3 << std::endl;
-                readScalar("uint4", uint4);
+                config_reader.readScalar("uint4", uint4);
                 std::cout << uint4 << std::endl;
             }
 
 
         private:
+            yaml_config::ConfigReader config_reader;
+            
             unsigned int uint1;
             unsigned int uint2;
             unsigned int uint3;
