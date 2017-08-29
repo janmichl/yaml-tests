@@ -22,8 +22,11 @@ namespace yaml_config
             }
 
 
-            template<typename t>
-                void readVectorDouble(const std::string& node_name, t& value_to_read)
+            template <typename t_Scalar,
+                      int t_rows,
+                      int t_flags>
+                void readVector(const std::string& node_name,
+                                Eigen::Matrix<t_Scalar, t_rows, 1, t_flags>& value_to_read)
             {
                     YAML::Node node = current_node_[node_name];
                     if(!node.IsSequence())
@@ -32,10 +35,13 @@ namespace yaml_config
                         throw(std::runtime_error("Entry not a sequence."));
                     }
                     
-                    value_to_read.resize(node.size());
+                    if (Eigen::Dynamic == t_rows)
+                    {
+                        value_to_read.resize(node.size());
+                    }
                     for(std::size_t i = 0; i < value_to_read.size(); ++i)
                     {
-                        value_to_read(i) = node[i].as<double>();
+                        value_to_read(i) = node[i].as<t_Scalar>();
                     }
             }
 

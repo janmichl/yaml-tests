@@ -33,9 +33,9 @@ namespace yaml_config
                 std::cout << string1 << std::endl;
                 config_reader.readScalar("string2", string2);
                 std::cout << string2 << std::endl;
-                config_reader.readVectorDouble("vector1", vector1);
+                config_reader.readVector("vector1", vector1);
                 std::cout << vector1 << std::endl;
-                config_reader.readVectorDouble("vector2", vector2);
+                config_reader.readVector("vector2", vector2);
                 std::cout << vector2 << std::endl;
             }
 
