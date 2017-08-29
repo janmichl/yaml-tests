@@ -8,6 +8,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include <Eigen/Core>
 
@@ -37,6 +38,12 @@ namespace yaml_config
                 std::cout << vector1 << std::endl;
                 config_reader.readVector("vector2", vector2);
                 std::cout << vector2 << std::endl;
+
+                config_reader.readVector("vector3", vector3);
+                for(std::size_t i = 0; i < vector3.size(); ++i)
+                {
+                    std::cout << vector3[i] << std::endl;
+                }
             }
 
 
@@ -48,5 +55,7 @@ namespace yaml_config
 
             Eigen::Vector2d vector1;
             Eigen::Vector2d vector2;
+
+            std::vector<std::string> vector3;
     };
 }//yaml_config

@@ -8,6 +8,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include "yaml-cpp/yaml.h"
 
@@ -26,7 +27,7 @@ namespace yaml_config
                       int t_rows,
                       int t_flags>
                 void readVector(const std::string& node_name,
-                                Eigen::Matrix<t_Scalar, t_rows, 1, t_flags>& value_to_read)
+                                Eigen::Matrix<t_Scalar, t_rows, 1, t_flags>& to_read)
             {
                     YAML::Node node = current_node_[node_name];
                     if(!node.IsSequence())
@@ -35,21 +36,39 @@ namespace yaml_config
                         throw(std::runtime_error("Entry not a sequence."));
                     }
                     
-                    if (Eigen::Dynamic == t_rows)
+                    if(Eigen::Dynamic == t_rows)
                     {
-                        value_to_read.resize(node.size());
+                        to_read.resize(node.size());
                     }
-                    for(std::size_t i = 0; i < value_to_read.size(); ++i)
+                    for(std::size_t i = 0; i < to_read.size(); ++i)
                     {
-                        value_to_read(i) = node[i].as<t_Scalar>();
+                        to_read(i) = node[i].as<t_Scalar>();
                     }
             }
 
 
             template<typename t>
-                void readScalar(const std::string& node_name, t& value_to_read)
+                void readScalar(const std::string& node_name, t& to_read)
             {
-                value_to_read = current_node_[node_name].as<t>(); 
+                to_read = current_node_[node_name].as<t>(); 
+            }
+            
+            
+            template<typename t>
+                void readVector(const std::string& node_name, std::vector<t>& to_read)
+            {
+                YAML::Node node = current_node_[node_name];
+                if(!node.IsSequence())
+                {
+                    std::cerr << "Entry is not a sequence." << std::endl;
+                    throw(std::runtime_error("Entry not a sequence."));
+                }
+                
+                to_read.resize(node.size());
+                for(std::size_t i = 0; i < to_read.size(); ++i)
+                {
+                    to_read[i] = node[i].as<t>();
+                }
             }
 
 
